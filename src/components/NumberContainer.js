@@ -3,7 +3,7 @@ import React from 'react'
 class NumberContainer extends React.Component {
     btnNumberClick = (eNumber) => {
         if (document.getElementById(eNumber.target.id).style.backgroundColor === "green") {
-            document.getElementById(eNumber.target.id).style.backgroundColor = "#ffc107";//rgb(230, 163, 236)";
+            document.getElementById(eNumber.target.id).style.backgroundColor = "#ffc107";
             eNumber.target.value = 0;
             let i = 0;
             while (i < 5) {
@@ -12,9 +12,6 @@ class NumberContainer extends React.Component {
                     this.props.selectedNumber[i].isSelected = "0";
                 }
                 i++;
-                /*if(i == 5) {
-                    alert("Opps")
-                }*/
             }
             this.props.numberClick(eNumber)
         }
@@ -37,14 +34,51 @@ class NumberContainer extends React.Component {
     }
 
     btnRandomClick = () => {
-        this.btnClearClick();
-        const minNumber = 1;
-        const maxNumber = 20;
         const randomNumber = [];
-        for (let i = 0; i < 5; i++) {
-            randomNumber[i] = Math.floor(Math.random() * (maxNumber - minNumber + 1) + minNumber);
+
+        let tempRandomNumber=0;
+        let indexRandom=0;
+        
+        let flag=true;
+        let outer = 0;
+        while(outer < 10) {
+            flag = true;
+            tempRandomNumber= Math.floor(Math.random() * 20) + 1;
+            let inner = 0;
+            while(inner < 5) {
+                if(tempRandomNumber === randomNumber[inner]) {
+                    flag = false;
+                    indexRandom-= 1; 
+                 break;
+                }
+                inner++;
+            }
+            if(flag) {
+                randomNumber[indexRandom] = tempRandomNumber;
+            }
+            indexRandom++;
+            if(indexRandom===5) {
+                break;
+            }
+            outer++;
         }
-        this.props.ranClick(randomNumber)
+
+        for(let id = 1; id <= 20; id++) {
+            document.getElementById(id).style.backgroundColor = "#ffc107"; 
+        }
+
+        let ctrOut = 0;
+        while(ctrOut < 5) {
+            let ctrIn = 1;
+            while(ctrIn <= 20) {
+                if (randomNumber[ctrOut] === ctrIn) {
+                    document.getElementById(ctrIn).style.backgroundColor = "green";
+                }
+                ctrIn++;
+            }
+            ctrOut++;
+        }
+        this.props.randomClick(randomNumber)
     }
 
     render() {

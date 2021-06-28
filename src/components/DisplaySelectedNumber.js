@@ -4,10 +4,13 @@ class DisplaySelectedNumber extends React.Component {
     render() {
       if(this.props.selectedNumber !== "0")
         return (
-          <h5> Mark : {this.props.selectedNumber} </h5>);
+          <h5 className = "text-danger custom-total-header"> Mark : {this.props.selectedNumber} </h5>
+        );
       else
         return (
-        <h5><br/></h5>);
-  }}
+        <br/>
+      );
+  }
+}
 
-  export default DisplaySelectedNumber 
+export default DisplaySelectedNumber 
