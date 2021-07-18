@@ -43,7 +43,7 @@ class NumberContainer extends React.Component {
         let outer = 0;
         while(outer < 10) {
             flag = true;
-            tempRandomNumber= Math.floor(Math.random() * 20) + 1;
+            tempRandomNumber = Math.floor(Math.random() * 20) + 1;
             let inner = 0;
             while(inner < 5) {
                 if(tempRandomNumber === randomNumber[inner]) {
