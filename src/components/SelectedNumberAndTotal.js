@@ -5,7 +5,7 @@ import DisplayTotal from './DisplayTotal';
 
 const SelectedNumberAndTotal = ({selectedNumber,totalAmount}) => {
   return (
-      <div className="selected-numbers">
+      <div className ="selected-numbers">
         <h4 className = "text-primary custom-total-header">Selected Numbers</h4>
         {selectedNumber.map(selected => (<DisplaySelectedNumber selectedNumber = {selected.value}/>))}
       
